@@ -186,7 +186,7 @@ private:// 接收请求内部使用的接口
             _httprequest._contentLenth = std::stoi(_httprequest._headkv["Content-Length"]);
             if(_httprequest._contentLenth != 0)
             {
-                LOG(INFO, "POST method, recv Content-Length: " + _httpRequest._headKV["Content-Length"]);
+                LOG(INFO, "POST method, recv Content-Length: " + _httprequest._headkv["Content-Length"]);
                 return true;
             }
             LOG(WARNING, "POST method but recv Content-Lenth is 0");
@@ -200,7 +200,26 @@ private:// 接收请求内部使用的接口
         // 如果请求方法_method是GET，那就一定没有请求正文，如果是POST那就会有请求正文
         if(IsNeedToRecvRequestBody())
         {
-            
+            std::string &body = _httprequest._requestBody;
+            char ch = 0;
+            int contentLength = _httprequest._contentLenth;
+            while(contentLength--)
+            {
+                ssize_t s = recv(_sock, &ch, 1,0);
+                if(s>0)
+                {
+                    body.push_back(ch);
+                }
+                else  // 读取正文对端写关闭或者读取失败-------------------------------------
+                {
+                    LOG(ERROR, "RecvRequestBody failed");
+                    stop = true;
+                    return;
+                }
+            }
         }
     }
+    
+public:
+
 };
