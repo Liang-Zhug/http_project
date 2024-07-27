@@ -38,6 +38,10 @@ private:
         pthread_mutex_lock(&_mtx);
     }
 
+    void test()
+    {
+        int a;
+    }
     void Unlock()
     {
         pthread_mutex_unlock(&_mtx);
