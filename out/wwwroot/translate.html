@@ -1,0 +1,55 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>简单翻译页面</title>  
+    <style>  
+        /* 简单的样式 */  
+        body {  
+            font-family: Arial, sans-serif;  
+            margin: 20px;  
+        }  
+        .container {  
+            max-width: 600px;  
+            margin: 0 auto;  
+            padding: 20px;  
+            border: 1px solid #ccc;  
+            border-radius: 8px;  
+        }  
+        #inputText {  
+            width: calc(100% - 22px);  
+            padding: 10px;  
+            margin-bottom: 10px;  
+        }  
+        #translateButton {  
+            padding: 10px 20px;  
+            cursor: pointer;  
+        }  
+        #outputText {  
+            margin-top: 10px;  
+            padding: 10px;  
+            border: 1px solid #ddd;  
+            background-color: #f9f9f9;  
+            border-radius: 4px;  
+        }  
+    </style>  
+</head>  
+<body>  
+
+<div class="container">  
+    <h2>简单翻译页面</h2>  
+    <form action="mysqlEnrollCgi" method="post" accept-charset="UTF-8">  
+        <label for="inputText">输入文本：</label>  
+        <textarea id="inputText" name="inputText" rows="4" cols="50"></textarea>  
+        <button id="translateButton" type="submit">翻译</button>  
+        <p>翻译结果：</p>  
+        <div id="outputText">翻译结果将显示在这里</div>  
+    </form>  
+</div>  
+  
+<!-- 这里可以添加JavaScript来调用翻译API -->  
+<!-- 示例中未包含JavaScript，因为需要后端支持或调用外部API -->  
+  
+</body>  
+</html>
